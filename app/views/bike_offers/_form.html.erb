@@ -1,9 +1,9 @@
 <%= simple_form_for(bike_offer) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :rating %>
+  <%= f.input :title %>
+  <%= f.input :price_per_day %>
+  <%= f.input :genre %>
+   <%= f.input :size %>
+  <%= f.input :user %>
   <%= f.submit %>
 <% end %>
 
-
-<%= render "form", restaurant: @restaurant %>
