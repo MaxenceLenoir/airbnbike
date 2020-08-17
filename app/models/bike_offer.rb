@@ -1,0 +1,2 @@
+class BikeOffer < ApplicationRecord
+end
