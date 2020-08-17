@@ -1,6 +1,6 @@
 class BikeOffersController < ApplicationController
     
-    before_action :set_bike_offer, only: [:show]
+    before_action :set_bike_offer, only: [:show, :update, :edit, :destroy]
 
 
 
@@ -32,6 +32,21 @@ class BikeOffersController < ApplicationController
         @all_my_user_bikes = BikeOffer.where("user_id = ?", current_user.id)
     end
 
+    def edit
+        unless @bike_offer.id == current_user.id
+          render "layouts/error"
+        end
+    end
+
+    def update
+        @bike_offer.update(bike_offer_params)
+        render :show
+    end
+
+    def destroy
+        @bike_offer.destroy
+        redirect_to bike_offers_path
+    end
 
     private
 
