@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2020_08_17_132754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bike_offers", force: :cascade do |t|
+    t.string "size"
+    t.integer "price_per_day"
+    t.string "genre"
+    t.string "user"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

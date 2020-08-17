@@ -1,0 +1,10 @@
+<h1>Bike details</h1>
+
+
+<h3> <%= @bike_offer.title %> </h3>
+<p>Genre : <%= @bike_offer.genre %></p>
+<p>Size : <%= @bike_offer.size %></p>
+<p>Price : <%= @bike_offer.price_per_day %>EUR</p>
+
+<%=link_to "See all bike offers", bike_offers_path %>
+<%=link_to "Create a new offer", new_bike_offer_path %>
