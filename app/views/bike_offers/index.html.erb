@@ -2,7 +2,9 @@
 
 <% @bike_offers.each do |bike_offer| %>
 <h4>Title : <%= bike_offer.title %> - Genre : <%= bike_offer.genre %></h4>
-
-
+<%=link_to "See details", bike_offer_path(bike_offer.id) %>
 
 <%end %>
+
+
+<%=link_to "Create a new offer", new_bike_offer_path %>
