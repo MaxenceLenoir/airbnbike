@@ -1,0 +1,9 @@
+<h1>Your bikes</h1>
+
+<% if @all_my_user_bikes.empty? %>
+    <p>You don't have any bike yet</p>
+<% else  %>
+    <% @all_my_user_bikes.each do |bike| %>
+        <%= bike.title %>
+    <% end  %>
+<%end %>

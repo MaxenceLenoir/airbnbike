@@ -28,6 +28,9 @@ class BikeOffersController < ApplicationController
     def show
     end
 
+    def all_my_bikes
+        @all_my_user_bikes = BikeOffer.where("user_id = ?", current_user.id)
+    end
 
 
     private
