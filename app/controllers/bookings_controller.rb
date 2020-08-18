@@ -15,15 +15,30 @@ class BookingsController < ApplicationController
         authorize @booking
     end
 
-    def booking_accepted
-        @booking.accepted = true
-        @booking.save
+    def accepted
+        @booking = Booking.find(params[:id])
+        @booking.update(accepted: true)
+        redirect_to all_my_bikes_path
+        authorize @booking
+    end
+
+    def declined
+        @booking = Booking.find(params[:id])
+        @booking.update(accepted: false)
+        redirect_to all_my_bikes_path
+        authorize @booking
+    end
+
+    def update
+        @booking.update(booking_params)
+        render :all_my_bikes
+        authorize @booking
     end
 
     private 
 
     def booking_params
-        params.require(:booking).permit(:start_date, :end_date, :bike_offer_id)
+        params.require(:booking).permit(:start_date, :end_date, :bike_offer_id, :accepted)
     end
 
 end
