@@ -5,7 +5,7 @@ class BikeOffersController < ApplicationController
 
 
     def index
-        @bike_offers = BikeOffer.all
+        @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
     end
     
     
@@ -33,6 +33,7 @@ class BikeOffersController < ApplicationController
 
     def all_my_bikes
         @all_my_user_bikes = BikeOffer.where("user_id = ?", current_user.id)
+        authorize :bike_offer, :all_my_bikes?
     end
 
     def edit

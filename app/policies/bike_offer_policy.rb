@@ -20,4 +20,9 @@ class BikeOfferPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def all_my_bikes?
+    true
+  end
+
 end
