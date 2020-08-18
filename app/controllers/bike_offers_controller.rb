@@ -11,6 +11,7 @@ class BikeOffersController < ApplicationController
     
     def new
         @bike_offer = BikeOffer.new
+        authorize @bike_offer
     end
 
     def create
@@ -22,10 +23,12 @@ class BikeOffersController < ApplicationController
         else
             render :new
         end
+        authorize @bike_offer
 
     end
 
     def show
+        authorize @bike_offer
     end
 
     def all_my_bikes
@@ -33,9 +36,7 @@ class BikeOffersController < ApplicationController
     end
 
     def edit
-        unless @bike_offer.id == current_user.id
-          render "layouts/error"
-        end
+
     end
 
     def update
