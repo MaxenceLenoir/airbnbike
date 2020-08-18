@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :pseudo, presence: true
   has_many :bike_offers
+  has_many :bookings
 end
