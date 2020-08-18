@@ -1,36 +1,15 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<div class="card bg-dark text-white">
-  <img class="card-img" src="https://mcgillstlaurent.com/wp-content/uploads/2017/02/banner-velo-1.jpg" alt="Card image">
-  <div class="card-img-overlay container mt-5">
-    <h1 class="card-title">Find the bike you deserve</h1>
+<div class="banner">
+  <div class="container"><p class="padding-banner">Find the bike you deserve</p>
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+      <button class="btn btn-info my-2 my-sm-0 mr-2" type="submit">Search</button>
     </form>
   </div>
 </div>
 
+
 <div class="container text-center mt-4 mb-4"><h3>135 available offers</h3>
 
-<div class="col-xs-12 col-sm-4">
-  <div class="card shadow-sm p-3 mb-3 bg-white rounded border-0">
-    <h5><strong>CargoBike City-E</strong></h5>
-    <div><h5>45$/day</div>
-    <img src="https://www.cc-montdesavaloirs.fr/wp-content/uploads/2020/06/velo_triporteur-e1591619894557.jpg" class="img-fluid mb-3">
-    <div class="d-flex justify-content-between">
-      <h6>by <u>Billy Joe</u></h6>
-      <button type="button" class="btn btn-info">Rent it</button>
-    </div>
-    <div class="d-flex justify-content-start">
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star nochecked"></span>
-      <span class="fa fa-star nochecked"></span>
-    </div>
-  </div>
-
-</div>
+<%= render 'shared/card' %>
 
 </div>
