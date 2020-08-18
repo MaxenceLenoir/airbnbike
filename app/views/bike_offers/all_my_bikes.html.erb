@@ -2,6 +2,8 @@
 
 <% if @all_my_user_bikes.empty? %>
     <p>You don't have any bike yet</p>
+    <%=link_to "Create a new offer", new_bike_offer_path %>
+    <%=link_to "See all bike offers", bike_offers_path %>
 <% else  %>
     <% @all_my_user_bikes.each do |bike| %>
         <%= bike.title %>
