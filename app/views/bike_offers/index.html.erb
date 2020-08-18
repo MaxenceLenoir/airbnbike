@@ -12,9 +12,9 @@
   <div class="grid-bikes">
     <% @bike_offers.each do |bike_offer| %>
       <div class="grid-col-bikes">
-        <div class="card shadow-sm p-3 mb-3 bg-white rounded border-0">
-          <h5><strong><%= bike_offer.title %></strong></h5>
-          <div><h5><%= bike_offer.price_per_day %>$/day</h5></div>
+        <div class="card-bike p-3 mb-3 bg-white rounded border-0">
+          <div class="card-title"><%= bike_offer.title %></div>
+          <div class="card-buble"><%= bike_offer.price_per_day %>$/day</div>
           <img src="https://www.cc-montdesavaloirs.fr/wp-content/uploads/2020/06/velo_triporteur-e1591619894557.jpg" class="img-fluid mb-3">
           <div class="d-flex justify-content-between">
             <h6>by <u><%= bike_offer.user.pseudo %></u></h6>
