@@ -7,6 +7,6 @@
 <% else  %>
     <% @all_my_user_bikes.each do |bike| %>
         <%= bike.title %>
-        <%=link_to "See details", bike_offer_path(bike_offer.id) %>
+        <%=link_to "See details", bike_offer_path(bike.id) %>
     <% end  %>
 <%end %>
