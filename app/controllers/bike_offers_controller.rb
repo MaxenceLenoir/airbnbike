@@ -5,12 +5,13 @@ class BikeOffersController < ApplicationController
 
 
     def index
-        @bike_offers = BikeOffer.all
+        @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
     end
     
     
     def new
         @bike_offer = BikeOffer.new
+        authorize @bike_offer
     end
 
     def create
@@ -22,30 +23,33 @@ class BikeOffersController < ApplicationController
         else
             render :new
         end
+        authorize @bike_offer
 
     end
 
     def show
+        authorize @bike_offer
     end
 
     def all_my_bikes
         @all_my_user_bikes = BikeOffer.where("user_id = ?", current_user.id)
+        authorize :bike_offer, :all_my_bikes?
     end
 
     def edit
-        unless @bike_offer.id == current_user.id
-          render "layouts/error"
-        end
+        authorize @bike_offer
     end
 
     def update
         @bike_offer.update(bike_offer_params)
         render :show
+        authorize @bike_offer
     end
 
     def destroy
         @bike_offer.destroy
         redirect_to bike_offers_path
+        authorize @bike_offer
     end
 
     private

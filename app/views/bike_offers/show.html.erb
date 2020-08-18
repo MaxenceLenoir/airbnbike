@@ -5,9 +5,16 @@
 <p>Genre : <%= @bike_offer.genre %></p>
 <p>Size : <%= @bike_offer.size %></p>
 <p>Price : <%= @bike_offer.price_per_day %>EUR</p>
-<% if @bike_offer.user_id == current_user.id %>
+
+<% if policy(@bike_offer).edit? %>
     <%=link_to "Update this bike", edit_bike_offer_path(@bike_offer) %>
     <%=link_to "Delete this bike", bike_offer_path(@bike_offer), method: :delete, data: {confirm: "Are your sure?"} %>
-<%end  %>
+<% end %>
+
+
+
 <%=link_to "See all bike offers", bike_offers_path %>
 <%=link_to "Create a new offer", new_bike_offer_path %>
+
+
+<%= console %>
