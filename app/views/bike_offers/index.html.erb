@@ -2,7 +2,7 @@
   <div class="container"><p class="padding-banner">Find the bike you deserve</p>
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-info my-2 my-sm-0 mr-2" type="submit">Search</button>
+      <button class="button-airbnbike" type="submit">Search</button>
     </form>
   </div>
 </div>
@@ -12,22 +12,28 @@
   <div class="grid-bikes">
     <% @bike_offers.each do |bike_offer| %>
       <div class="grid-col-bikes">
-        <div class="card shadow-sm p-3 mb-3 bg-white rounded border-0">
-          <h5><strong><%= bike_offer.title %></strong></h5>
-          <div><h5><%= bike_offer.price_per_day %>$/day</h5></div>
-          <img src="https://www.cc-montdesavaloirs.fr/wp-content/uploads/2020/06/velo_triporteur-e1591619894557.jpg" class="img-fluid mb-3">
-          <div class="d-flex justify-content-between">
-            <h6>by <u><%= bike_offer.user.pseudo %></u></h6>
-            <%=link_to bike_offer_path(bike_offer.id) do %>
-              <button type="button" class="btn btn-info">Details</button>
-            <% end %>
+        <div class="card-bike">
+          <div class="card-container-img" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('https://www.cc-montdesavaloirs.fr/wp-content/uploads/2020/06/velo_triporteur-e1591619894557.jpg');background-size: cover;background-position: center;">
           </div>
-          <div class="d-flex justify-content-start">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star nochecked"></span>
-            <span class="fa fa-star nochecked"></span>
+          <div class="card-buble">
+            <span class= "card-buble-price"><%= bike_offer.price_per_day %></span>
+            <span class = "card-buble-dollar">$</span>
+          </div>
+          <div class="card-text-container">
+            <div class="card-bike-title"><%= bike_offer.title %></div>
+            <%=link_to bike_offer_path(bike_offer.id) do %>
+              <button type="button" class="button-airbnbike my-2">Details</button>
+            <% end %>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-start">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star nochecked"></span>
+                <span class="fa fa-star nochecked"></span>
+              </div>
+              <div class= "card-buble-dollar">by <u><%= bike_offer.user.pseudo %></u></div>
+            </div>
           </div>
         </div>
       </div>

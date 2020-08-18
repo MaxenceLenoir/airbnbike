@@ -4,3 +4,59 @@
 .nochecked {
   color: #DCDCDC;
 }
+
+.card-bike {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(255, 255, 255);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
+}
+
+.card-bike-title {
+  font-family: "Baloo Tamma 2";
+  font-weight: bold;
+  font-size: 16px;
+  color: $grey-black;
+}
+
+.card-buble {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.842);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+}
+
+.card-buble-price {
+  font-family: "Baloo Tamma 2";
+  font-size: 16px;
+  color: $grey-black;
+  font-weight: bold;
+}
+
+.card-buble-dollar {
+  font-family: "Baloo Tamma 2";
+  font-size: 12px;
+  color: $grey-black;
+}
+
+.card-text-container {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container-img {
+  height: 220px;
+}
