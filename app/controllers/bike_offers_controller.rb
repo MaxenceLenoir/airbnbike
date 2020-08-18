@@ -28,6 +28,7 @@ class BikeOffersController < ApplicationController
     end
 
     def show
+        @booking = Booking.new
         authorize @bike_offer
     end
 
