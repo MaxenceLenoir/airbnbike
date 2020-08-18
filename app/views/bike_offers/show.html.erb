@@ -2,6 +2,34 @@
 
 
 <h3> <%= @bike_offer.title %> </h3>
+
+<div id="carouselExampleControls" class="carousel slide container" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <% if @bike_offer.photos.first.nil? %>
+      <%= image_tag "https://res.cloudinary.com/dow6rowa0/image/upload/v1597753157/photo-1523357585206-175e971f2ad9_q3r6tl.webp", class: 'd-block w-100' %>
+      <% else %>
+      <%= cl_image_tag @bike_offer.photos.first.key, height: 480, width: 640, crop: :fill, class: 'd-block w-100' %>
+    </div>
+    <% unless @bike_offer.photos.length == 1 %>
+      <% @bike_offer.photos[1..].each do |photo| %>
+      <div class="carousel-item">
+        <%= cl_image_tag photo.key, height: 480, width: 640, crop: :fill, class: 'd-block w-100' %>
+      </div>
+      <% end %>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <p>Genre : <%= @bike_offer.genre %></p>
 <p>Size : <%= @bike_offer.size %></p>
 <p>Price : <%= @bike_offer.price_per_day %>EUR</p>
@@ -16,5 +44,3 @@
 <%=link_to "See all bike offers", bike_offers_path %>
 <%=link_to "Create a new offer", new_bike_offer_path %>
 
-
-<%= console %>

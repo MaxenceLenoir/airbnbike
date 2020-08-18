@@ -1,5 +1,5 @@
 class BikeOffersController < ApplicationController
-    
+
     before_action :set_bike_offer, only: [:show, :update, :edit, :destroy]
 
 
@@ -7,8 +7,8 @@ class BikeOffersController < ApplicationController
     def index
         @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
     end
-    
-    
+
+
     def new
         @bike_offer = BikeOffer.new
         authorize @bike_offer
@@ -17,7 +17,7 @@ class BikeOffersController < ApplicationController
     def create
         @bike_offer = BikeOffer.new(bike_offer_params)
         @bike_offer.user = current_user
-        
+
         if @bike_offer.save
             redirect_to @bike_offer
         else
@@ -55,7 +55,7 @@ class BikeOffersController < ApplicationController
     private
 
     def bike_offer_params
-        params.require(:bike_offer).permit(:title, :price_per_day, :size, :genre, :user_id)
+        params.require(:bike_offer).permit(:title, :price_per_day, :size, :genre, :user_id, photos: [])
     end
 
     def set_bike_offer
