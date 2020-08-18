@@ -31,13 +31,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+<<<<<<< HEAD
 gem 'cloudinary', '~> 1.12.0'
+=======
+gem 'devise'
+>>>>>>> c0c611fbcb0bcfb26e88748505b85631125ea5a4
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
-  gem 'devise'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
