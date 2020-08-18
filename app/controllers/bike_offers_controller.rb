@@ -36,17 +36,19 @@ class BikeOffersController < ApplicationController
     end
 
     def edit
-
+        authorize @bike_offer
     end
 
     def update
         @bike_offer.update(bike_offer_params)
         render :show
+        authorize @bike_offer
     end
 
     def destroy
         @bike_offer.destroy
         redirect_to bike_offers_path
+        authorize @bike_offer
     end
 
     private
