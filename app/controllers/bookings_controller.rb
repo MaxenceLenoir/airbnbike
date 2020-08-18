@@ -1,41 +1,29 @@
 class BookingsController < ApplicationController
 
     def create
-        @booking = Booking.new
+        @booking = Booking.new(booking_params)
+        @bike_offer = BikeOffer.find(params[:bike_offer_id])
         
+        @booking.bike_offer =  @bike_offer
+        @booking.user = current_user
+    
+        if @booking.save
+            redirect_to bike_offers_path
+        else
+            render bike_offer(@bike_offer)
+        end
+        authorize @booking
+    end
+
+    def booking_accepted
+        @booking.accepted = true
+        @booking.save
+    end
+
+    private 
+
+    def booking_params
+        params.require(:booking).permit(:start_date, :end_date, :bike_offer_id)
     end
 
 end
-
-
-def create
-    @dose = Dose.new(dose_params)
-    @cocktail = Cocktail.find(params[:cocktail_id])
-    
-    @ingredient = Ingredient.find(@dose.ingredient_id)
-
-    @dose.cocktail =  @cocktail
-    @dose.ingredient = @ingredient
-
-    if @dose.save
-        redirect_to cocktail_path(@cocktail)
-    else
-        render "cocktails/show"
-    end
-end
-
-
-
-private
-
-    def dose_params
-        params.require(:dose).permit(:description, :cocktail_id, :ingredient_id)
-    end
-    
-
-
-    <%= simple_form_for [ @cocktail, @dose ] do |f| %>
-        <%= f.input :description %>
-        <%= f.association :ingredient %>
-        <%= f.submit "Add ", class: "btn btn-primary" %>
-      <% end %>

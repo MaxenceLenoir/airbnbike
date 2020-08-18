@@ -7,6 +7,15 @@
 <% else  %>
     <% @all_my_user_bikes.each do |bike| %>
         <%= bike.title %>
+        <p>You have <%= bike.bookings.count %> booking request(s).</p>
+            <% n = 0  %>
+            <% bike.bookings.each do |booking|  %>
+                <% n +=1  %>
+                <p>Booking <%= n %>. Start date : <%= booking.start_date %> | End date: <%= booking.end_date %></p>
+            <% end %>
         <%=link_to "See details", bike_offer_path(bike.id) %>
+        
     <% end  %>
 <%end %>
+
+<%= console %>
