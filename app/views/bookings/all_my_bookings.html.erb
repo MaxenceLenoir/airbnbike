@@ -1,0 +1,23 @@
+ <div class="container">
+  <h1 class="margintb30">My Bookings</h1>
+
+  <% if @all_my_bookings.empty? %>
+      <p>You don't have any booking yet</p>
+      <%=link_to "Create a new offer", new_bike_offer_path %>
+      <%=link_to "See all bike offers", bike_offers_path %>
+  <% else  %>
+    <% n = 0 %>
+      <% @all_my_bookings.each do |booking| %>
+        <% n += 1  %>
+        <p><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.bike_offer.title %></strong></span>
+        <% if booking.accepted.nil? %>
+          <p class="booking-pending">Pending ...</p>
+        <% elsif  booking.accepted == true %>
+          <p class="booking-accepted">Accepted</p>
+        <% elsif booking.accepted == false %>
+          <p class="booking-declined">Declined</p>
+        <% end  %>
+        </p>
+      <% end  %>
+  <%end %>
+</div>
