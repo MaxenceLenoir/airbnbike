@@ -13,8 +13,13 @@
     <% @bike_offers.each do |bike_offer| %>
       <div class="grid-col-bikes">
         <div class="card-bike">
-          <div class="card-container-img" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('https://www.cc-montdesavaloirs.fr/wp-content/uploads/2020/06/velo_triporteur-e1591619894557.jpg');background-size: cover;background-position: center;">
-          </div>
+          <% if bike_offer.photos.first.nil? %>
+            <div class="card-container-img-default">
+            </div>
+          <% else %>
+            <div class="card-container-img" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('<%= cl_image_path bike_offer.photos.first.key %>');background-size: cover;background-position: center;">
+            </div>
+          <% end %>
           <div class="card-buble">
             <span class= "card-buble-price"><%= bike_offer.price_per_day %></span>
             <span class = "card-buble-dollar">$</span>

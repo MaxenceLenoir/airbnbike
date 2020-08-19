@@ -59,4 +59,14 @@
 
 .card-container-img {
   height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-container-img-default {
+  background: linear-gradient(217deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  background-image: asset-url('velo-default.jpg');
+  height: 220px;
+  background-size: cover;
+  background-position: center;
 }
