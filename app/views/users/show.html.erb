@@ -1,2 +1,33 @@
-<h1><%= @user.pseudo %></h1>
-<%= render 'form', user: @user %>
+<div class="container mt-4 mb-4">
+
+
+    <div class="row">    
+
+    
+       
+            <% if (current_user.nil? || current_user.photo.attachment.nil?) %> 
+            <%= image_tag('default-avatar.png', width: 200, height: 200, crop:"fill"  ) %>
+            <% else %> 
+            <%= cl_image_tag current_user.photo.key, width: 200, height: 200, crop:"fill" %>
+            <% end %>
+   
+            <div class="pl-5">
+                <h1>Your profile</h1>
+                <h5>Pseudo : <%= @user.pseudo %></h5>
+                <h5>Email : <%= @user.email %></h5>
+                <%= render 'form', user: @user %>
+            </div>
+            
+   
+        
+    
+
+
+    
+
+    </div>
+</div>
+
+
+
+       
