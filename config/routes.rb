@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     end
   end
   get "/all_my_bikes", to: "bike_offers#all_my_bikes"
+  resources :users, only: [ :show, :update ]
 end
