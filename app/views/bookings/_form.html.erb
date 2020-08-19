@@ -4,7 +4,9 @@
 <div class="card p-5 m-5">
 <h5>I would like to book this bike</h5>
     <%= simple_form_for [@bike_offer, @booking] do |f| %>
+            <i class="fas fa-calendar-week"></i>
             <%= f.input :start_date  %>
+            <i class="fas fa-calendar-week"></i>
             <%= f.input :end_date  %>
             <%= f.submit "Send a request for this bike", class: "btn btn-primary" %>
     <% end  %>
