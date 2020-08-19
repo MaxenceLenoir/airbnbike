@@ -24,7 +24,7 @@ mickael = User.new(pseudo: "mickael", email: "mickael@lewagon.org" , password: "
 mickael.save
 
 
-bike1 = BikeOffer.new(title: "Le super vélo de Thomas", price_per_day: 100, genre: "Tandem Bikes", size: "L")
+bike1 = BikeOffer.new(title: "Le super vélo de Thomas", price_per_day: 100, genre: "Tandem Bike", size: "L")
 bike1.user = thomas
 bike1.save
 
@@ -44,7 +44,7 @@ bike5 = BikeOffer.new(title: "Le 2ème vélo de Thomas", price_per_day: 90, genr
 bike5.user = thomas
 bike5.save
 
-bike6 = BikeOffer.new(title: "Le 2ème vélo de Maxence", price_per_day: 14, genre: "Tandem Bikes", size: "L")
+bike6 = BikeOffer.new(title: "Le 2ème vélo de Maxence", price_per_day: 14, genre: "Tandem Bike", size: "L")
 bike6.user = maxence
 bike6.save
 
