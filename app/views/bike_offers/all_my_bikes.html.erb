@@ -1,30 +1,41 @@
-<h1>Your bikes</h1>
+<div class="container">
+  <h1 class="margintb30">My offers</h1>
 
-<% if @all_my_user_bikes.empty? %>
-    <p>You don't have any bike yet</p>
-    <%=link_to "Create a new offer", new_bike_offer_path %>
-    <%=link_to "See all bike offers", bike_offers_path %>
-<% else  %>
+  <% if @all_my_user_bikes.empty? %>
+      <p>You don't have any bike yet</p>
+      <%=link_to "Create a new offer", new_bike_offer_path %>
+      <%=link_to "See all bike offers", bike_offers_path %>
+  <% else  %>
 
-    <% @all_my_user_bikes.each do |bike| %>
-        <%= bike.title %> <%=link_to "See details", bike_offer_path(bike.id) %>
-        <% if bike.bookings == [] %>
-            <p>=> No booking request</p>
-        <% else  %>
-            <% n = 0  %>
-            <% bike.bookings.each do |booking| %>
-                <% n +=1  %>
-                <p>Booking request<%= n %>. : Start date : <%= booking.start_date %> | End date: <%= booking.end_date %> 
-                <% if booking.accepted.nil? %>
-                    | <%=link_to "Accept this booking", accepted_booking_path(booking), method: :patch %>
-                    | <%=link_to "Decline this booking", declined_booking_path(booking), method: :patch %>
-                <% elsif  booking.accepted == true %>
-                   | Booking accepted
-                <% elsif booking.accepted == false %>
-                    | Booking declined
-                <% end  %>
-                </p>
-            <% end %>
-        <% end %>    
-    <% end  %>
-<%end %>
+      <% @all_my_user_bikes.each do |bike| %>
+      <div class='card-bike padding12 marginb15 textcardlarge'>
+          <div class='card-bike-title mb-2'><%=link_to bike.title, bike_offer_path(bike.id), class: "without-decoration" %></div>
+          <% if bike.bookings == [] %>
+              <p class="no-booking-requests">No booking request</p>
+          <% else  %>
+              <% n = 0  %>
+              <% bike.bookings.each do |booking| %>
+                  <% n += 1  %>
+                  <p><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong></span>
+                  <% if booking.accepted.nil? %>
+                  <div class="choice-option">
+                      <%=link_to accepted_booking_path(booking), method: :patch do %>
+                        <button type="button" class="button-airbnbike">Accept</button>
+                      <% end %>
+
+                      <%=link_to declined_booking_path(booking), method: :patch do %>
+                        <button class="declined-button">Decline</button>
+                      <% end %>
+                  </div>
+                  <% elsif  booking.accepted == true %>
+                     <br><span class="booking-accepted">Booking accepted</span>
+                  <% elsif booking.accepted == false %>
+                      <br><span class="booking-declined">Booking declined</span>
+                  <% end  %>
+                  </p>
+              <% end %>
+          <% end %>
+        </div>
+      <% end  %>
+  <%end %>
+</div>
