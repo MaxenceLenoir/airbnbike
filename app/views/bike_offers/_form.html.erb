@@ -1,9 +1,11 @@
 <%= simple_form_for(bike_offer) do |f| %>
+<div class="container">
   <%= f.input :title %>
   <%= f.input :price_per_day %>
   <%= f.input :genre, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: ["City Bike", "Electric Bike", "Mountain Bike", "Road Bike",  "Tandem Bike", "Cargo Bike"]  %>
   <%= f.input :size, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: ["XS", "S", "M", "L", "XL"]  %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true, class: "button-select" } %>
+  <%= f.button :submit, class: "button-airbnbike" %>
+  </div>
 <% end %>
 
