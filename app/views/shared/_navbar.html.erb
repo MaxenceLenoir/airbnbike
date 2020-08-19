@@ -24,7 +24,7 @@
       </ul>
 
       <div class="nav-item dropdown">
-        <% if (current_user.nil? || current_user.photo.nil?) %> 
+        <% if (current_user.nil? || current_user.photo.attachment.nil?) %> 
           <%= image_tag('default-avatar.png', class: 'avatar dropdown-toggle', id: 'navbarDropdown', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } ) %>
         <% else %> 
           <%= cl_image_tag current_user.photo.key, class: 'avatar-large dropdown-toggle', id: 'navbarDropdown', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false } %>
