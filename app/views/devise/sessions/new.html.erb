@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row login-card">
   <div class="col-sm-6 col-lg-4 offset-sm-3 offset-lg-4">
 
-<h2>Log in</h2>
+<span class="no-booking-requests">Find the bike you deserve :</span>
+<h3 style="margin-bottom: 30px;">Log in !</h3>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
@@ -16,7 +17,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
+        <%= f.button :submit, "Log in", class: "button-airbnbike mb-5" %>
       </div>
     <% end %>
 
