@@ -13,6 +13,10 @@ class BookingPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def all_my_bookings?
+    true
+  end
+  
   def accepted? 
     true
   end

@@ -35,6 +35,11 @@ class BookingsController < ApplicationController
         authorize @booking
     end
 
+    def all_my_bookings
+        @all_my_bookings = Booking.where("user_id = ?", current_user.id)
+        authorize :booking, :all_my_bookings?
+    end
+
     private 
 
     def booking_params
