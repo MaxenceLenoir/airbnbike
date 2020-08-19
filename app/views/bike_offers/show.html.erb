@@ -2,7 +2,7 @@
 <div class="container text-center mt-4 mb-4">
 
 <div class="container-card-show">
-  <div class="card pt-3">
+  <div class="card pt-3 shadow">
         <div id="carouselExampleControls" class="carousel slide container" data-ride="carousel">
           <div class="carousel-inner">
               <% if @bike_offer.photos.first.nil? %>
@@ -33,7 +33,7 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">
-            <p><%= @bike_offer.title %></p>
+            <p class="font-weight-bold"><%= @bike_offer.title %></p>
             <p><i class="fas fa-bicycle"></i> : <%= @bike_offer.genre %> | Size : <%= @bike_offer.size %></p>
             <p><%= @bike_offer.price_per_day %> <i class="fas fa-euro-sign"></i> per day</p>
           </h5>

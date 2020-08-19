@@ -1,7 +1,7 @@
 
 
 <% if current_user != @bike_offer.user %>
-<div class="card p-5 m-5">
+<div class="card p-5 m-5 shadow">
 <h5>I would like to book this bike</h5>
     <%= simple_form_for [@bike_offer, @booking] do |f| %>
             <i class="fas fa-calendar-week"></i>
