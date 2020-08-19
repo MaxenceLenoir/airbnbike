@@ -1,10 +1,12 @@
 
 
 <% if current_user != @bike_offer.user %>
-<h3>I would like to book this bike</h3>
+<div class="card p-5 m-5">
+<h5>I would like to book this bike</h5>
     <%= simple_form_for [@bike_offer, @booking] do |f| %>
             <%= f.input :start_date  %>
             <%= f.input :end_date  %>
             <%= f.submit "Send a request for this bike", class: "btn btn-primary" %>
     <% end  %>
 <%end %>
+</div>
