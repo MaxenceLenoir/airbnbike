@@ -9,33 +9,34 @@
 
       <% @all_my_user_bikes.each do |bike| %>
       <div class='card-bike padding12 marginb15 textcardlarge'>
-          <div class='card-bike-title mb-2'><%=link_to bike.title, bike_offer_path(bike.id), class: "without-decoration" %></div>
+          <div class='card-bike-title mb-2'><span style="color: #167FFB;"><i class="fas fa-bicycle"></i>  </span><%=link_to bike.title, bike_offer_path(bike.id), class: "without-decoration" %></div>
           <% if bike.bookings == [] %>
               <p class="no-booking-requests">No booking request</p>
           <% else  %>
               <% n = 0  %>
               <% bike.bookings.each do |booking| %>
                   <% n += 1  %>
-                  <p><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong></span>
+                  <div class="booking-minicard">><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong></span>
                   <% if booking.accepted.nil? %>
                   <div class="choice-option">
                       <%=link_to accepted_booking_path(booking), method: :patch do %>
-                        <button type="button" class="button-airbnbike">Accept</button>
+                        <button type="button" class="button-airbnbike m-2">Accept</button>
                       <% end %>
 
                       <%=link_to declined_booking_path(booking), method: :patch do %>
-                        <button class="declined-button">Decline</button>
+                        <button class="declined-button m-2">Decline</button>
                       <% end %>
                   </div>
                   <% elsif  booking.accepted == true %>
-                     <br><span class="booking-accepted">Booking accepted</span>
+                  | <span class="booking-accepted">Booking accepted</span>
                   <% elsif booking.accepted == false %>
-                      <br><span class="booking-declined">Booking declined</span>
+                  | <span class="booking-declined">Booking declined</span>
                   <% end  %>
-                  </p>
+                  </div>
               <% end %>
           <% end %>
         </div>
       <% end  %>
   <%end %>
+  <%= link_to "Create offer", new_bike_offer_path, class: "button-action without-decoration"%>
 </div>
