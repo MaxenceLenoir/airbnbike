@@ -18,16 +18,16 @@
           </div>
           </p>
         <% elsif  booking.accepted == true %>
-          <p class="booking-accepted">Accepted
+          <p class="booking-accepted">Request accepted
             <div class="card-buble ml-4">
-            <span class= "card-buble-price"><%= %></span>
+            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
             <span class = "card-buble-dollar"></span>
           </div>
           </p>
         <% elsif booking.accepted == false %>
-          <p class="booking-declined">Declined
+          <p class="booking-declined">Request declined
             <div class="card-buble ml-4">
-            <span class= "card-buble-price"><%= %></span>
+            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
             <span class = "card-buble-dollar"></span>
             </div>
           </p>
