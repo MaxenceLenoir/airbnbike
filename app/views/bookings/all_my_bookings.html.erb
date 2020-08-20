@@ -7,7 +7,7 @@
       <%=link_to "See all bike offers", bike_offers_path %>
   <% else  %>
     <% n = 0 %>
-      <% @all_my_bookings.each do |booking| %>
+      <% @all_my_bookings.reverse.each do |booking| %>
         <% n += 1  %>
         <p><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.bike_offer.title %></strong></span>
         <% if booking.accepted.nil? %>
@@ -21,3 +21,6 @@
       <% end  %>
   <%end %>
 </div>
+
+
+<%console  %>

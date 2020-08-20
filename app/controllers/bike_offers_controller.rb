@@ -46,7 +46,7 @@ class BikeOffersController < ApplicationController
     end
 
     def update
-        @bike_offer.update(bike_offer_params)
+        @bike_offer.update!(bike_offer_params)
         render :show
         authorize @bike_offer
     end
