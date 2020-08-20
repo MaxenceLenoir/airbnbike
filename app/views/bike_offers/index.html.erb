@@ -1,9 +1,15 @@
 <div class="banner">
   <div class="container"><p class="padding-banner">Find the bike you deserve</p>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="button-airbnbike" type="submit">Search</button>
-    </form>
+    <form action="" class="form-inline">
+      <%= form_tag bike_offers_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mr-sm-2",
+          placeholder: "Find a bike"
+        %>
+        <%= submit_tag "Search", class: "button-airbnbike" %>
+      <% end %>
+      </form>
   </div>
 </div>
 

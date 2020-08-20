@@ -4,7 +4,11 @@ class BikeOffersController < ApplicationController
     before_action :set_bike_offer, only: [:show, :update, :edit, :destroy]
 
     def index
+        if params[:query].present?
+            @bike_offers = policy_scope(BikeOffer.search_by_title_and_genre(params[:query]))
+        else
         @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
+        end
     end
 
     def new
@@ -40,7 +44,7 @@ class BikeOffersController < ApplicationController
     end
 
     def update
-        @bike_offer.update(bike_offer_params)
+        @bike_offer.update!(bike_offer_params)
         render :show
         authorize @bike_offer
     end
