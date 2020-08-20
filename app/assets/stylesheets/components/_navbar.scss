@@ -1,6 +1,37 @@
 .navbar-lewagon {
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+  padding: 4px 0;
+}
+
+.logo {
+  padding-top: 4px;
+  font-family: "Baloo Tamma 2";
+  font-weight: bold;
+  font-size: 24px;
+  color: $grey-black;
+  opacity: 1;
+  transition: 0.5s opacity ease;
+}
+
+.invisible-logo {
+  opacity: 0;
+  transition: 0.5s opacity ease;
+}
+
+.container-navbar {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  width: 1140px;
+}
+
+.navbar-lewagon-white {
+  background-color: $grey-black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +40,28 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+@media (min-width: 576px) {
+  .container-navbar {
+    width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-navbar {
+    width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-navbar {
+    width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-navbar {
+    width: 1140px;
+  }
 }
