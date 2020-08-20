@@ -91,12 +91,16 @@
   <%= f.submit "Submit review", class: "btn btn-primary" %>
 <% end %>
 
-<ul class="list-group">
+<div class="reviews">
   <% @bike_offer.reviews.each do |review| %>
-    <li class="list-group-item"><%= review.content %></li>
+    <p>
+      <% review.rating.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <% (5 - review.rating).times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    </p>
+    <p><%= review.content %></p>
   <% end %>
-</ul>
-
-
-
 </div>
