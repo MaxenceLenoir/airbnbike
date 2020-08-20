@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
         @booking.user = current_user
     
         if @booking.save
-            redirect_to bike_offers_path
+            redirect_to all_my_bookings_path
         else
             render bike_offer(@bike_offer)
         end
