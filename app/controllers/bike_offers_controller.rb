@@ -7,8 +7,18 @@ class BikeOffersController < ApplicationController
         if params[:query].present?
             @bike_offers = policy_scope(BikeOffer.search_by_title_and_genre(params[:query]))
         else
-        @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
+            @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
         end
+
+
+        @bike_offers_with_coodinates = BikeOffer.geocoded
+        @markers = @bike_offers_with_coodinates.map do |bike_offer|
+            {
+              lat: bike_offer.latitude,
+              lng: bike_offer.longitude
+            }
+          end
+
     end
 
     def new

@@ -1,5 +1,5 @@
 class BikeOffer < ApplicationRecord
-    validates :size, :title, presence: true
+    validates :size, :title, :address, presence: true
     validates :genre, presence: true, inclusion: { in: ["City Bike", "Electric Bike", "Mountain Bike", "Road Bike",  "Tandem Bike", "Cargo Bike"]}
     validates :price_per_day, inclusion: {in: 0..999}
     belongs_to :user
