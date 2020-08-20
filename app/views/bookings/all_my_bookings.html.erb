@@ -9,29 +9,33 @@
     <% n = 0 %>
       <% @all_my_bookings.reverse.each do |booking| %>
         <% n += 1  %>
-        <div class='card-bike padding12 marginb15 textcardlarge'><span style="color:$grey-black"> > Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong> | <span style="color: #167FFB;"><strong><i class="fas fa-bicycle"></i>  <%=link_to booking.bike_offer.title, bike_offer_path(booking.bike_offer), class: "without-decoration" %></strong></span>
-        <% if booking.accepted.nil? %>
-          <p class="booking-pending">Pending ...
-            <div class="card-buble ml-4">
-            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
-            <span class = "card-buble-dollar"></span>
-          </div>
-          </p>
-        <% elsif  booking.accepted == true %>
-          <p class="booking-accepted">Request accepted
-            <div class="card-buble ml-4">
-            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
-            <span class = "card-buble-dollar"></span>
-          </div>
-          </p>
-        <% elsif booking.accepted == false %>
-          <p class="booking-declined">Request declined
-            <div class="card-buble ml-4">
-            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
-            <span class = "card-buble-dollar"></span>
+        <div class='card-bike padding12 marginb15 textcardlarge'>
+          <span style="color:$grey-black"> > Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong> | <span style="color: #167FFB;"><strong><i class="fas fa-bicycle"></i>  <%=link_to booking.bike_offer.title, bike_offer_path(booking.bike_offer), class: "without-decoration" %></strong></span>
+          <% if booking.accepted.nil? %>
+            <p class="booking-pending">Pending ...
+              <div class="card-buble ml-4">
+              <span class= "card-buble-price"><%= booking.compute_price %>$</span>
             </div>
-          </p>
-        <% end  %>
+            </p>
+          <% elsif  booking.accepted == true %>
+            <p class="booking-accepted">Request accepted
+              <div class="card-buble ml-4">
+              <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+              <% if booking.order.state == "pending" %>
+                <%= form_tag orders_path do %>
+                  <%= hidden_field_tag 'booking_id', booking.id %>
+                  <%= submit_tag 'Purchase', class: 'btn btn-primary btn-card-pay' %>
+                <% end %>
+              <% end %>
+              </div>
+            </p>
+          <% elsif booking.accepted == false %>
+            <p class="booking-declined">Request declined
+              <div class="card-buble ml-4">
+              <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+              </div>
+            </p>
+          <% end  %>
         </div>
       <% end  %>
   <%end %>

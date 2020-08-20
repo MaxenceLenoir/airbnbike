@@ -42,7 +42,7 @@
                 <p class="font-weight-bold"><%= @bike_offer.title %></p>
                 <p><i class="fas fa-bicycle"></i> : <%= @bike_offer.genre %> | Size : <%= @bike_offer.size %></p>
                 <p><i class="fas fa-map-marker"></i> <%= @bike_offer.address %></p>
-                <p><%= @bike_offer.price_per_day %> <i class="fas fa-euro-sign"></i> per day</p>
+                <p><%= humanized_money_with_symbol(@bike_offer.price) %> per day</p>
               </h5>
             </div>
       </div>  
