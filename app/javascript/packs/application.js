@@ -25,13 +25,21 @@ require("channels")
 // External imports
 import "bootstrap";
 import { alert_destroy } from "../plugins/alert_destroy";
+<<<<<<< HEAD
 import { initMapbox } from '../plugins/init_mapbox';
+=======
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { chooseNavBar } from '../components/navbar';
+
+>>>>>>> 31a148948aa67ff699730078db78e7517a0626c2
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initUpdateNavbarOnScroll();
+  chooseNavBar();
   alert_destroy();
   initMapbox();
 });

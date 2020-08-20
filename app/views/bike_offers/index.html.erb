@@ -1,6 +1,7 @@
-<div class="banner">
-  <div class="container"><p class="padding-banner">Find the bike you deserve</p>
-    <form action="" class="form-inline">
+<div class="home-banner">
+  <div class="container">
+    <p class="padding-banner">Find the bike you deserve</p>
+    <div class="form-inline">
       <%= form_tag bike_offers_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
@@ -9,7 +10,7 @@
         %>
         <%= submit_tag "Search", class: "button-airbnbike" %>
       <% end %>
-      </form>
+    </div>
   </div>
 </div>
 

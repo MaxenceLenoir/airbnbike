@@ -1,4 +1,4 @@
- <div class="container">
+  <div class="container">
   <h1 class="margintb30">My Bookings</h1>
 
   <% if @all_my_bookings.empty? %>
@@ -9,15 +9,31 @@
     <% n = 0 %>
       <% @all_my_bookings.reverse.each do |booking| %>
         <% n += 1  %>
-        <p><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.bike_offer.title %></strong></span>
+        <div class='card-bike padding12 marginb15 textcardlarge'><span style="color:$grey-black"> > Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong> | <span style="color: #167FFB;"><strong><i class="fas fa-bicycle"></i>  <%=link_to booking.bike_offer.title, bike_offer_path(booking.bike_offer), class: "without-decoration" %></strong></span>
         <% if booking.accepted.nil? %>
-          <p class="booking-pending">Pending ...</p>
+          <p class="booking-pending">Pending ...
+            <div class="card-buble ml-4">
+            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+            <span class = "card-buble-dollar"></span>
+          </div>
+          </p>
         <% elsif  booking.accepted == true %>
-          <p class="booking-accepted">Accepted</p>
+          <p class="booking-accepted">Request accepted
+            <div class="card-buble ml-4">
+            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+            <span class = "card-buble-dollar"></span>
+          </div>
+          </p>
         <% elsif booking.accepted == false %>
-          <p class="booking-declined">Declined</p>
+          <p class="booking-declined">Request declined
+            <div class="card-buble ml-4">
+            <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+            <span class = "card-buble-dollar"></span>
+            </div>
+          </p>
         <% end  %>
-        </p>
+        </div>
       <% end  %>
   <%end %>
+  <%= link_to "Find a bike", root_path, class: "button-action without-decoration"%>
 </div>

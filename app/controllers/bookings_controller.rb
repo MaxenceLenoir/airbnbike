@@ -1,12 +1,14 @@
+require "date"
+
 class BookingsController < ApplicationController
 
     def create
         @booking = Booking.new(booking_params)
         @bike_offer = BikeOffer.find(params[:bike_offer_id])
-        
+
         @booking.bike_offer =  @bike_offer
         @booking.user = current_user
-    
+
         if @booking.save
             redirect_to all_my_bookings_path
         else
@@ -35,12 +37,18 @@ class BookingsController < ApplicationController
         authorize @booking
     end
 
+    #def total_price
+   #   @total = booking.end_date - booking.start_date
+  #    @price_booking = (booking.bike_offer.price_per_day * total.to_i)
+ #     raise
+#    end
+
     def all_my_bookings
         @all_my_bookings = Booking.where("user_id = ?", current_user.id)
         authorize :booking, :all_my_bookings?
     end
 
-    private 
+    private
 
     def booking_params
         params.require(:booking).permit(:start_date, :end_date, :bike_offer_id, :accepted)
