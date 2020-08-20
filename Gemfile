@@ -34,11 +34,8 @@ gem 'simple_form'
 gem 'cloudinary', '~> 1.12.0'
 gem 'devise'
 gem 'pg_search', '~> 2.3.0'
-<<<<<<< HEAD
 gem 'money-rails'
-=======
 gem 'geocoder'
->>>>>>> a1bd84c5240e8a99d7f306105d3eccd710223583
 
 group :development, :test do
   gem 'pry-byebug'
