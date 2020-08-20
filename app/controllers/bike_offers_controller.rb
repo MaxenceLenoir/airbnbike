@@ -2,12 +2,9 @@ class BikeOffersController < ApplicationController
 
     before_action :set_bike_offer, only: [:show, :update, :edit, :destroy]
 
-
-
     def index
         @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
     end
-
 
     def new
         @bike_offer = BikeOffer.new
