@@ -32,7 +32,7 @@ bike2 = BikeOffer.new(title: "Le super vélo de Maxence", price_per_day: 110, ge
 bike2.user = maxence
 bike2.save
 
-bike3 = BikeOffer.new(title: "Le super vélo de Mickael", price_per_day: 115, genre: "Mountain Bike", size: "L", address: "12 rue Basse, Lille")
+bike3 = BikeOffer.new(title: "Le super vélo de Mickael", price_per_day: 115, genre: "Mountain Bike", size: "L", address: "1 Rue Jean Walter, Lille")
 bike3.user = mickael
 bike3.save
 
@@ -40,11 +40,11 @@ bike4 = BikeOffer.new(title: "Le super vélo de Marie", price_per_day: 13, genre
 bike4.user = marie
 bike4.save
 
-bike5 = BikeOffer.new(title: "Le 2ème vélo de Thomas", price_per_day: 90, genre: "City Bike", size: "L", address: "Mairie de Lille")
+bike5 = BikeOffer.new(title: "Le 2ème vélo de Thomas", price_per_day: 90, genre: "City Bike", size: "L", address: "385 Rue Léon Gambetta, Lille")
 bike5.user = thomas
 bike5.save
 
-bike6 = BikeOffer.new(title: "Le 2ème vélo de Maxence", price_per_day: 14, genre: "Tandem Bike", size: "L", address: "Gare Lille Flandres")
+bike6 = BikeOffer.new(title: "Le 2ème vélo de Maxence", price_per_day: 14, genre: "Tandem Bike", size: "L", address: "19 Rue de Bruxelles, Lille")
 bike6.user = maxence
 bike6.save
 
