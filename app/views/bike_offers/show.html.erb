@@ -80,6 +80,23 @@
   <p><%=link_to "Create a new offer", new_bike_offer_path %></p>
 </div>   
 
+<%= simple_form_for [ @bike_offer, @review ] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating, as: :hidden  %>
+  <div class="my-3">
+    <% 5.times do |index| %>
+      <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
+    <% end %>
+  </div>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+
+<ul class="list-group">
+  <% @bike_offer.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
+
 
 
 </div>

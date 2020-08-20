@@ -6,5 +6,6 @@ class User < ApplicationRecord
   validates :pseudo, presence: true
   has_many :bike_offers
   has_many :bookings
+  has_many :reviews, dependent: :destroy
   has_one_attached :photo
 end

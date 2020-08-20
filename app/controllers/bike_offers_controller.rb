@@ -33,6 +33,8 @@ class BikeOffersController < ApplicationController
 
     def show
         @booking = Booking.new
+        @review = Review.new
+       # @average_rating = @reviews.average(:rating)
         authorize @bike_offer
     end
 
