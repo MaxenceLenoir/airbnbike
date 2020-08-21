@@ -1,11 +1,11 @@
-<div class="container margintb30">
+<div class="container margintb30 footer-small">
 
     <div class="row">
 
-            <% if (current_user.nil? || current_user.photo.attachment.nil?) %>
+            <% if (@user.nil? || @user.photo.attachment.nil?) %>
             <%= image_tag('default-avatar.png', width: 200, height: 200, crop:"fill"  ) %>
             <% else %>
-            <%= cl_image_tag current_user.photo.key, width: 200, height: 200, crop:"fill" %>
+            <%= cl_image_tag @user.photo.key, width: 200, height: 200, crop:"fill" %>
             <% end %>
 
             <div class="pl-5">

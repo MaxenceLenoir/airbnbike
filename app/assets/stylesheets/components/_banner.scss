@@ -7,3 +7,11 @@
   font-size: 40px;
   line-height: 0.9;
 }
+
+.footer {
+  min-height: calc(100vh - 31vh);
+}
+
+.footer-small {
+  min-height: calc(100vh - 35vh);
+}

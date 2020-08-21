@@ -77,15 +77,24 @@
   margin-left: auto;
 }
 
+.card-bike-review{
+  display:flex;
+  justify-content: center;
+}
 
 .review-border{
   margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.842);
   border-radius: 5px;
+  width: 500px;
 }
 
 .btn-card-pay {
   position: absolute;
   right: -5px;
   bottom: -30px;
+}
+
+.form-review { 
+  width: 500px;
 }
