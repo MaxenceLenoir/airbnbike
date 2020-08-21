@@ -37,7 +37,6 @@
               <% end %>
               <div class="d-flex justify-content-between">
                 <div class="d-flex justify-content-start">
-
                   <% if bike_offer.average.nil?  %>
                     <% 5.times do %>
                     <i class="far fa-star"></i>
@@ -54,15 +53,15 @@
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-
-      <div id="map"
-        class="map-position rounded mobile-hide"
-        style="height: 100vh;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
+        </div>
+      <% end %>
     </div>
 
+    <div id="map"
+      class="map-position rounded mobile-hide"
+      style="height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
+</div>
