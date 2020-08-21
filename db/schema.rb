@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_185036) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.integer "amount_cents", default: 0, null: false
@@ -72,6 +73,15 @@ ActiveRecord::Schema.define(version: 2020_08_20_185036) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["booking_id"], name: "index_orders_on_booking_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+=======
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "bike_offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "rating"
+    t.index ["bike_offer_id"], name: "index_reviews_on_bike_offer_id"
+>>>>>>> 2cc1dda282c191c9771b96dff57c2392889f3996
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,6 +101,10 @@ ActiveRecord::Schema.define(version: 2020_08_20_185036) do
   add_foreign_key "bike_offers", "users"
   add_foreign_key "bookings", "bike_offers"
   add_foreign_key "bookings", "users"
+<<<<<<< HEAD
   add_foreign_key "orders", "bookings"
   add_foreign_key "orders", "users"
+=======
+  add_foreign_key "reviews", "bike_offers"
+>>>>>>> 2cc1dda282c191c9771b96dff57c2392889f3996
 end
