@@ -12,3 +12,27 @@
 .padding-banner {
   padding-bottom: 30px;
 }
+
+.all-content {
+  display: grid;
+  grid-template-columns: 6fr 3fr
+}
+
+@media (max-width: 768px) {
+  .all-content {
+  display: unset;
+}
+}
+
+@media (max-width: 520px) {
+  .all-content {
+  display: unset;
+}
+}
+
+.map-position {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  margin-left: 20px;
+}

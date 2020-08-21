@@ -15,46 +15,53 @@
 </div>
 
 <div class="container text-center mt-4 mb-4"><h3><%= @bike_offers.count %> available offers</h3>
-
-  <div class="grid-bikes">
-    <% @bike_offers.each do |bike_offer| %>
-      <div class="grid-col-bikes">
-        <div class="card-bike">
-          <% if bike_offer.photos.first.nil? %>
-            <div class="card-container-img-default">
-            </div>
-          <% else %>
-            <div class="card-container-img" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('<%= cl_image_path bike_offer.photos.first.key %>');background-size: cover;background-position: center;">
-            </div>
-          <% end %>
-          <div class="card-buble">
-            <span class= "card-buble-price"><%= bike_offer.price_per_day %></span>
-            <span class = "card-buble-dollar">$</span>
-          </div>
-          <div class="card-text-container">
-            <div class="card-bike-title"><%= bike_offer.title %></div>
-            <%=link_to bike_offer_path(bike_offer.id) do %>
-              <button type="button" class="button-airbnbike my-2">Details</button>
-            <% end %>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex justify-content-start">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star nochecked"></span>
-                <span class="fa fa-star nochecked"></span>
+  <div class="all-content"> 
+    <div class="grid-bikes">
+      <% @bike_offers.each do |bike_offer| %>
+        <div class="grid-col-bikes">
+          <div class="card-bike">
+            <% if bike_offer.photos.first.nil? %>
+              <div class="card-container-img-default">
               </div>
-              <div class= "card-buble-dollar">by <u><%= bike_offer.user.pseudo %></u></div>
+            <% else %>
+              <div class="card-container-img" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('<%= cl_image_path bike_offer.photos.first.key %>');background-size: cover;background-position: center;">
+              </div>
+            <% end %>
+            <div class="card-buble">
+              <span class= "card-buble-price"><%= humanized_money_with_symbol(bike_offer.price) %></span>
+            </div>
+            <div class="card-text-container">
+              <div class="card-bike-title"><%= bike_offer.title %></div>
+              <%=link_to bike_offer_path(bike_offer.id) do %>
+                <button type="button" class="button-airbnbike my-2">Details</button>
+              <% end %>
+              <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-start">
+                  <% if bike_offer.average.nil?  %>
+                    <% 5.times do %>
+                    <i class="far fa-star"></i>
+                    <% end %>
+                  <%else %>
+                    <% bike_offer.average.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5 - bike_offer.average).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+      <% end %>
+    </div>
 
-<div id="map"
-  style="width: 100%; height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div id="map"
+      class="map-position rounded mobile-hide"
+      style="height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>

@@ -34,7 +34,10 @@ gem 'simple_form'
 gem 'cloudinary', '~> 1.12.0'
 gem 'devise'
 gem 'pg_search', '~> 2.3.0'
+gem 'money-rails'
 gem 'geocoder'
+gem 'stripe'
+gem 'stripe_event'
 
 group :development, :test do
   gem 'pry-byebug'
