@@ -4,7 +4,8 @@ class BikeOffer < ApplicationRecord
     validates :genre, presence: true, inclusion: { in: ["City Bike", "Electric Bike", "Mountain Bike", "Road Bike",  "Tandem Bike", "Cargo Bike"]}
     validates :price_cents, inclusion: {in: 0..999999}
     belongs_to :user
-    has_many :bookings, dependent: :delete_all
+    has_many :bookings, dependent: :destroy
+    has_many :orders, through: :bookings
     has_many_attached :photos
     geocoded_by :address
     after_validation :geocode, if: :will_save_change_to_address?

@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: booking.id,
-        amount: booking.compute_price / 100,
+        amount: booking.compute_price,
         currency: 'eur',
         quantity: 1
       }],

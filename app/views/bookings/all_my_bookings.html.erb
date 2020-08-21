@@ -14,25 +14,27 @@
           <% if booking.accepted.nil? %>
             <p class="booking-pending">Pending ...
               <div class="card-buble ml-4">
-              <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+              <span class= "card-buble-price"><%= booking.compute_price_cents %>$</span>
             </div>
             </p>
           <% elsif  booking.accepted == true %>
             <p class="booking-accepted">Request accepted
               <div class="card-buble ml-4">
-              <span class= "card-buble-price"><%= booking.compute_price %>$</span>
-              <% if booking.order.state == "pending" %>
+              <span class= "card-buble-price"><%= booking.compute_price_cents %>$</span>
+              <% if booking.order.nil? %>
                 <%= form_tag orders_path do %>
                   <%= hidden_field_tag 'booking_id', booking.id %>
                   <%= submit_tag 'Purchase', class: 'btn btn-primary btn-card-pay' %>
                 <% end %>
+              <% else %>
+                 <i class="fas fa-check-circle btn-card-pay text-success"></i>
               <% end %>
               </div>
             </p>
           <% elsif booking.accepted == false %>
             <p class="booking-declined">Request declined
               <div class="card-buble ml-4">
-              <span class= "card-buble-price"><%= booking.compute_price %>$</span>
+              <span class= "card-buble-price"><%= booking.compute_price_cents %>$</span>
               </div>
             </p>
           <% end  %>
