@@ -85,27 +85,35 @@
   <p><%=link_to "Create a new offer", new_bike_offer_path %></p>
 </div>   
 
-<%= simple_form_for [ @bike_offer, @review ] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating, as: :hidden  %>
-  <div class="my-3">
-    <% 5.times do |index| %>
-      <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
-    <% end %>
-  </div>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
-
-<div class="reviews">
-  <% @bike_offer.reviews.each do |review| %>
-    <p>
-      <% review.rating.times do %>
-        <i class="fas fa-star"></i>
+<div class="container">
+<div class="pb-5">
+  <div class= 'form-review text-center' >
+      <%= simple_form_for [ @bike_offer, @review ] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating, as: :hidden  %>
+        <div class="my-3">
+          <% 5.times do |index| %>
+            <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
+          <% end %>
+        </div>
+        <%= f.submit "Submit review", class: "btn btn-primary" %>
       <% end %>
-      <% (5 - review.rating).times do %>
-        <i class="far fa-star"></i>
-      <% end %>
-    </p>
-    <p><%= review.content %></p>
-  <% end %>
+    </div>
 </div>
+
+    <div class='card-bike-review'>
+        <% @bike_offer.reviews.each do |review| %>
+        <div class="review-border border text-center">
+          <p>
+            <% review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </p>
+            <p><%= review.content %></p>
+        </div>
+        <% end %>
+    <div>
+  </div>
