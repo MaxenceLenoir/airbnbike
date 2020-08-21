@@ -2,7 +2,7 @@ class BikeOffer < ApplicationRecord
     monetize :price_cents
     validates :size, :title, :address, presence: true
     validates :genre, presence: true, inclusion: { in: ["City Bike", "Electric Bike", "Mountain Bike", "Road Bike",  "Tandem Bike", "Cargo Bike"]}
-    validates :price_cents, inclusion: {in: 0..999999}
+    validates :price_cents, presence: true, inclusion: {in: 0..999999}
     belongs_to :user
     has_many :bookings, dependent: :destroy
     has_many :orders, through: :bookings
