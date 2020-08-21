@@ -1,12 +1,11 @@
-<%= link_to bike_offer_path(bike_offer) do %>
-    <p><%= bike_offer.title %></p>
-    <% if bike_offer.photos.first.nil? %>
-        <%= image_tag'velo-default.jpg', alt: "Le Wagon", width: 50, height: 40 %>
-        </div>
-    <% else %>
-    <%= cl_image_tag(bike_offer.photos.first.key, width: 50, height: 40, crop: :fill) %>
-        </div>
-    <% end %>
-    <p><%= bike_offer.genre %></p>
-    <p><%= bike_offer.address %></p>
-<%end%>
+  <%= link_to bike_offer_path(bike_offer), class: "without-decoration" do %>
+      <p class="font-weight-bold pt-2"><%= bike_offer.title %></p>
+      <% if bike_offer.photos.first.nil? %>
+          <%= image_tag'velo-default.jpg', alt: "Le Wagon" %>
+          </div>
+      <% else %>
+      <%= cl_image_tag(bike_offer.photos.first.key, width: 180, height: 140, crop: :fill) %>
+          </div>
+      <% end %>
+      <p class="pl-2 pr-2 pt-2" style="text-decoration: none;"><%= bike_offer.genre %> located at <%= bike_offer.address %></p>
+  <%end%>
