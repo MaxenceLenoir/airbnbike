@@ -28,8 +28,7 @@
             </div>
           <% end %>
           <div class="card-buble">
-            <span class= "card-buble-price"><%= bike_offer.price_per_day %></span>
-            <span class = "card-buble-dollar">$</span>
+            <span class= "card-buble-price"><%= humanized_money_with_symbol(bike_offer.price) %></span>
           </div>
           <div class="card-text-container">
             <div class="card-bike-title"><%= bike_offer.title %></div>

@@ -71,9 +71,14 @@
   background-position: center;
 }
 
-
 .container-card-show {
   margin-top: 30px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.btn-card-pay {
+  position: absolute;
+  right: -5px;
+  bottom: -30px;
 }

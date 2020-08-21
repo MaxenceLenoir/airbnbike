@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   get "/all_my_bikes", to: "bike_offers#all_my_bikes"
   get "/all_my_bookings", to: "bookings#all_my_bookings"
   resources :users, only: [ :show, :update ]
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 end
