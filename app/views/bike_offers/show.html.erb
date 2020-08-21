@@ -1,11 +1,7 @@
 
 <div class="container text-center mt-4 mb-4">
 
-<div class="alert alert-danger invisible" id="alert">
-  You can't delete this bike !!
-</div>
-
-<div class="row">
+<div class="row mb-4">
   <div class="col-sm-6">
     <div class="container-card-show">
       <div class="card pt-3 shadow">
@@ -75,30 +71,19 @@
   </div>
 </div>
 
-
-
-
-
-
-<div class="container-card-show text-center">
-  <p><%=link_to "See all bike offers", bike_offers_path %></p>
-  <p><%=link_to "Create a new offer", new_bike_offer_path %></p>
-</div>   
-
-
 <% unless @bike_offer.user == current_user %>
   <div class="container">
   <div class="pb-5">
     <div class= 'form-review text-center' >
         <%= simple_form_for [ @bike_offer, @review ] do |f| %>
-          <%= f.input :content %>
+          <%= f.input :content, label: 'Leave a review' %>
           <%= f.input :rating, as: :hidden  %>
           <div class="my-3">
             <% 5.times do |index| %>
               <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
             <% end %>
           </div>
-          <%= f.submit "Submit review", class: "btn btn-primary" %>
+          <%= f.submit "Submit review", class: "button-airbnbike" %>
         <% end %>
       </div>
   </div>

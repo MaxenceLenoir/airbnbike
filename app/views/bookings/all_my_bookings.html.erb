@@ -3,8 +3,6 @@
 
   <% if @all_my_bookings.empty? %>
       <p>You don't have any booking yet</p>
-      <%=link_to "Create a new offer", new_bike_offer_path %>
-      <%=link_to "See all bike offers", bike_offers_path %>
   <% else  %>
     <% n = 0 %>
       <% @all_my_bookings.reverse.each do |booking| %>

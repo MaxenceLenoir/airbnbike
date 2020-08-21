@@ -1,7 +1,8 @@
 .navbar-lewagon {
   background-color: transparent;
   transition: 0.5s background-color ease;
-  padding: 4px 0;
+  padding-bottom: 4px;
+  padding-top: 14px;
 }
 
 .logo {
@@ -32,6 +33,7 @@
 
 .navbar-lewagon-white {
   background-color: $grey-black;
+  padding: 4px 0px;
 }
 
 .navbar-lewagon .navbar-collapse {

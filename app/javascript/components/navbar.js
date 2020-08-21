@@ -4,7 +4,7 @@ const initUpdateNavbarOnScroll = () => {
   const logo = document.querySelector('#Airbnbike');
   if (navbar && banner) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= window.innerHeight*0.1 && window.scrollY <= window.innerHeight*0.45) {
+      if (window.scrollY >= window.innerHeight*0.05 && window.scrollY <= window.innerHeight*0.4) {
         logo.classList.add('invisible-logo');
       } else {
         logo.classList.remove('invisible-logo');

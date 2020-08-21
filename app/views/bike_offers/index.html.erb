@@ -50,7 +50,9 @@
                     <% end %>
                   <% end %>
                 </div>
-                <p class="font-italic">by <%= bike_offer.user.pseudo %></p>
+                <%= link_to user_path(bike_offer.user), class:"without-decoration" do  %>
+                  <div class="font-italic">by <%= bike_offer.user.pseudo %></div>
+                <% end %>
               </div>
             </div>
           </div>

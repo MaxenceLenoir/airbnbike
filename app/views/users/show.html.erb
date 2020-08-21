@@ -1,9 +1,6 @@
 <div class="container margintb30">
 
-
     <div class="row">
-
-
 
             <% if (current_user.nil? || current_user.photo.attachment.nil?) %>
             <%= image_tag('default-avatar.png', width: 200, height: 200, crop:"fill"  ) %>
@@ -15,7 +12,9 @@
                 <h1>Your profile</h1>
                 <h5>Pseudo : <%= @user.pseudo %></h5>
                 <h5>Email : <%= @user.email %></h5>
-                <%= render 'form', user: @user %>
+                <% if current_user == @user %>
+                    <%= render 'form', user: @user %>
+                <% end %>
             </div>
 
     </div>

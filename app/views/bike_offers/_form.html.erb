@@ -1,7 +1,7 @@
 <%= simple_form_for(bike_offer) do |f| %>
 <div class="container">
   <%= f.input :title %>
-  <%= f.input :price %>
+  <%= f.input :price, input_html: { type: 'number', min: '1', max: '999999' }%>
   <%= f.input :genre, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: ["City Bike", "Electric Bike", "Mountain Bike", "Road Bike",  "Tandem Bike", "Cargo Bike"]  %>
   <%= f.input :size, as: :radio_buttons, wrapper: :vertical_collection_inline, collection: ["XS", "S", "M", "L", "XL"]  %>
   <%= f.input :address %>
