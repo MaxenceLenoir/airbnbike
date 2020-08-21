@@ -37,12 +37,6 @@ class BookingsController < ApplicationController
         authorize @booking
     end
 
-    #def total_price
-   #   @total = booking.end_date - booking.start_date
-  #    @price_booking = (booking.bike_offer.price_per_day * total.to_i)
- #     raise
-#    end
-
     def all_my_bookings
         @all_my_bookings = Booking.where("user_id = ?", current_user.id)
         authorize :booking, :all_my_bookings?

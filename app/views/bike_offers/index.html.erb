@@ -15,9 +15,7 @@
 </div>
 
 <div class="container text-center mt-4 mb-4"><h3><%= @bike_offers.count %> available offers</h3>
-
-  <div class="all-content">
-
+  <div class="all-content"> 
     <div class="grid-bikes">
       <% @bike_offers.each do |bike_offer| %>
         <div class="grid-col-bikes">
@@ -30,8 +28,7 @@
               </div>
             <% end %>
             <div class="card-buble">
-              <span class= "card-buble-price"><%= bike_offer.price_per_day %></span>
-              <span class = "card-buble-dollar">$</span>
+              <span class= "card-buble-price"><%= humanized_money_with_symbol(bike_offer.price) %></span>
             </div>
             <div class="card-text-container">
               <div class="card-bike-title"><%= bike_offer.title %></div>
@@ -40,27 +37,32 @@
               <% end %>
               <div class="d-flex justify-content-between">
                 <div class="d-flex justify-content-start">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star nochecked"></span>
-                  <span class="fa fa-star nochecked"></span>
+
+                  <% if bike_offer.average.nil?  %>
+                    <% 5.times do %>
+                    <i class="far fa-star"></i>
+                    <% end %>
+                  <%else %>
+                    <% bike_offer.average.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5 - bike_offer.average).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  <% end %>
                 </div>
-                <div class= "card-buble-dollar">by <u><%= bike_offer.user.pseudo %></u></div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-    <div id="map"
-      class="map-position rounded mobile-hide"
-      style="height: 100vh;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div id="map"
+        class="map-position rounded mobile-hide"
+        style="height: 100vh;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
 
   </div>
-
-</div>
