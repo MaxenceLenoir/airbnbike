@@ -10,7 +10,7 @@
       <% @all_my_bookings.reverse.each do |booking| %>
         <% n += 1  %>
         <div class='card-bike padding12 marginb15 textcardlarge'>
-          <span style="color:$grey-black"> > Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong> | <span style="color: #167FFB;"><strong><i class="fas fa-bicycle"></i>  <%=link_to booking.bike_offer.title, bike_offer_path(booking.bike_offer), class: "without-decoration" %></strong></span>
+          <span style="color:$grey-black"> > Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong> by <%= booking.user.pseudo  %> | <span style="color: #167FFB;"><strong><i class="fas fa-bicycle"></i>  <%=link_to booking.bike_offer.title, bike_offer_path(booking.bike_offer), class: "without-decoration" %></strong></span>
           <% if booking.accepted.nil? %>
             <p class="booking-pending">Pending ...
               <div class="card-buble ml-4">

@@ -16,7 +16,7 @@
               <% n = 0  %>
               <% bike.bookings.each do |booking| %>
                   <% n += 1  %>
-                  <div class="booking-minicard">><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong></span>
+                  <div class="booking-minicard">><span style="color:$grey-black"> Booking request n°<%= n %> | <strong>From <%= booking.start_date %> to <%= booking.end_date %></strong> by <%= booking.user.pseudo  %></span>
                   <% if booking.accepted.nil? %>
                   <div class="choice-option">
                       <%=link_to accepted_booking_path(booking), method: :patch do %>
