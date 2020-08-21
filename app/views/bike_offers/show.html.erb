@@ -104,7 +104,7 @@
   </div>
 
       <div class='card-bike-review'>
-          <% @bike_offer.reviews.each do |review| %>
+          <% @bike_offer.reviews.reverse.each do |review| %>
           <div class="review-border border text-center">
             <p>
               <% review.rating.times do %>
