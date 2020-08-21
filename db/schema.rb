@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_08_20_140914) do
 
+ActiveRecord::Schema.define(version: 2020_08_20_120218) do
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +47,9 @@ ActiveRecord::Schema.define(version: 2020_08_20_140914) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.bigint "user_id"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_bike_offers_on_user_id"
   end
 

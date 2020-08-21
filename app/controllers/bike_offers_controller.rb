@@ -1,17 +1,26 @@
 class BikeOffersController < ApplicationController
+    require 'date'
 
     before_action :set_bike_offer, only: [:show, :update, :edit, :destroy]
-
-
 
     def index
         if params[:query].present?
             @bike_offers = policy_scope(BikeOffer.search_by_title_and_genre(params[:query]))
         else
-        @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
+            @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
         end
-    end
 
+
+        @bike_offers_with_coodinates = BikeOffer.geocoded
+        @markers = @bike_offers_with_coodinates.map do |bike_offer|
+            {
+              lat: bike_offer.latitude,
+              lng: bike_offer.longitude,
+              infoWindow: render_to_string(partial: "info_window", locals: { bike_offer: bike_offer }),
+            }
+          end
+
+    end
 
     def new
         @bike_offer = BikeOffer.new
@@ -54,15 +63,28 @@ class BikeOffersController < ApplicationController
     end
 
     def destroy
-        @bike_offer.destroy
-        redirect_to bike_offers_path
+        if can_i_destroy?(@bike_offer)
+            @bike_offer.destroy
+            redirect_to bike_offers_path
+        else
+            redirect_to bike_offer_path(@bike_offer)
+        end
         authorize @bike_offer
     end
 
     private
 
+    def can_i_destroy?(bike_offer)
+        bike_offer.bookings.each do |booking|
+            if booking.accepted.nil? || (booking.end_date > Date.today && booking.accepted)
+                return false
+            end
+        end
+        true
+    end
+
     def bike_offer_params
-        params.require(:bike_offer).permit(:title, :price_per_day, :size, :genre, :user_id, photos: [])
+        params.require(:bike_offer).permit(:title, :price_per_day, :size, :genre, :address, :user_id, photos: [])
     end
 
     def set_bike_offer
