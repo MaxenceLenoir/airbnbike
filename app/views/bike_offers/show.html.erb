@@ -43,9 +43,6 @@
             </div>
       </div>  
     </div>
-    
-      
-     
   </div>  
 
      <% if policy(@bike_offer).edit? %>
@@ -69,11 +66,12 @@
   <div class="col-sm-6">      
     <%= render '/bookings/form', booking: @booking %>
   </div>
+
 </div>
 
 <% unless @bike_offer.user == current_user %>
   <div class="container">
-  <div class="pb-5">
+  <div class="pb-5 d-flex justify-content-center">
     <div class= 'form-review text-center' >
         <%= simple_form_for [ @bike_offer, @review ] do |f| %>
           <%= f.input :content, label: 'Leave a review' %>
@@ -86,23 +84,28 @@
           <%= f.submit "Submit review", class: "button-airbnbike" %>
         <% end %>
       </div>
-  </div>
-
-      <div class='card-bike-review'>
-          <% @bike_offer.reviews.reverse.each do |review| %>
-          <div class="review-border border text-center">
-            <p>
-              <% review.rating.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
-              <% (5 - review.rating).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
-            </p>
-              <p><%= review.content %></p>
-              <p class="font-italic">by <%= current_user.pseudo %></p>
-          </div>
-          <% end %>
-      <div>
     </div>
-<%end  %>
+  <% end %>
+
+  <h4 class="text-center">Reviews</h4>
+  <% if @bike_offer.reviews.first.nil? %>
+    <p>There is no reviews ...</p>
+  <% else %>
+    <div class='card-bike-review'>
+        <% @bike_offer.reviews.reverse.each do |review| %>
+        <div class="review-border border text-center pt-3">
+          <p>
+            <% review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </p>
+          <p><%= review.content %></p>
+          <p class="font-italic">by anonymous</p>
+        </div>
+        <% end %>
+    </div>
+  <% end %>
+  <%= console %>
