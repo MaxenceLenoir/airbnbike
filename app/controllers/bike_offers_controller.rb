@@ -10,7 +10,6 @@ class BikeOffersController < ApplicationController
             @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
         end
 
-
         @bike_offers_with_coodinates = BikeOffer.geocoded
         @markers = @bike_offers_with_coodinates.map do |bike_offer|
             {
@@ -84,7 +83,7 @@ class BikeOffersController < ApplicationController
     end
 
     def bike_offer_params
-        params.require(:bike_offer).permit(:title, :price_per_day, :size, :genre, :address, :user_id, photos: [])
+        params.require(:bike_offer).permit(:title, :price, :size, :genre, :address, :user_id, photos: [])
     end
 
     def set_bike_offer

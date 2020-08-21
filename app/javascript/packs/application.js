@@ -26,7 +26,6 @@ require("channels")
 import "bootstrap";
 
 import { dynamicRating } from "../plugins/starsInReviewForm";
-
 import { initMapbox } from '../plugins/init_mapbox';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { chooseNavBar } from '../components/navbar';
