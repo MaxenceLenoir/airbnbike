@@ -24,10 +24,14 @@ require("channels")
 
 // External imports
 import "bootstrap";
+
+import { dynamicRating } from "../plugins/starsInReviewForm";
+
 import { alert_destroy } from "../plugins/alert_destroy";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { chooseNavBar } from '../components/navbar';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -35,10 +39,18 @@ import { chooseNavBar } from '../components/navbar';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+  dynamicRating();
+});
+
+
+
+
   initUpdateNavbarOnScroll();
   chooseNavBar();
   alert_destroy();
   initMapbox();
 });
+
 
 
