@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Destroying all data"
-
+puts "Destroying 1"
+Review.destroy_all
+puts "Destroying 2"
 Booking.destroy_all
+puts "Destroying 3"
 BikeOffer.destroy_all
+puts "Destroying 4"
 User.destroy_all
 
 puts "Creating Users ..."
