@@ -20,4 +20,10 @@ class BikeOffer < ApplicationRecord
       using: {
         tsearch: { prefix: true }
       }
+
+      def average
+        (self.reviews.pluck(:rating).sum/self.reviews.size).round if self.reviews.any?
+      end
+
+
 end
