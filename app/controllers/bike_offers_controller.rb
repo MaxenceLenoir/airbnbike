@@ -5,7 +5,7 @@ class BikeOffersController < ApplicationController
 
     def index
         if params[:query].present?
-            @bike_offers = policy_scope(BikeOffer.search_by_title_and_genre(params[:query]))
+            @bike_offers = policy_scope(BikeOffer.search_by_title_and_genre_and_address(params[:query]))
         else
             @bike_offers = policy_scope(BikeOffer).order(created_at: :desc)
         end
